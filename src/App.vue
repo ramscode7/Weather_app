@@ -1,26 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <the-loader v-if="loader"></the-loader>
+    <the-first></the-first>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import { mapState } from "vuex";
+import TheFirst from "./components/TheFirst.vue";
+import TheLoader from "./components/TheLoader.vue";
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    TheFirst,
+    TheLoader,
+  },
+  computed: {
+    ...mapState({ loader: (state) => state.showLoader }),
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  background-color: rgb(202, 241, 228);
 }
 </style>
